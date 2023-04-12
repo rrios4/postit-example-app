@@ -35,26 +35,28 @@ const AddPost = (props: Props) => {
     }
 
   return (
-    <form onSubmit={handleSubmit} method='POST'>
-        <div className='flex flex-col my-4'>
-            <textarea 
-                onChange={(e) => setTitle(e.target.value)} 
-                name='title' 
-                value={title} 
-                placeholder='Whats on you mind'
-                className='p-4 text-lg rounded-md my-2 bg-gray-200'    
-            ></textarea>
-        </div>
-        <div className='flex items-center justify-between gap-2'>
-            <p className={`font-bold text-sm ${title.length > 300 ? "text-red-700" : "text-gray-700"}`}>{`${title.length}/300`}</p>
-            <button 
-            disabled={isDisabled} 
-            className='py-2 px-4 m-1 bg-blue-500 rounded-xl text-sm text-white outline outline-blue-400 outline-1 font-light disabled:opacity-30 hover:bg-blue-600'
-            type='submit'
-            >Create a post
-            </button>
-        </div>
-    </form>
+    <div className='bg-white shadow-xs px-6 pt-2 pb-6 mb-2 rounded-xl'>
+        <form onSubmit={handleSubmit} method='POST'>
+            <div className='flex flex-col my-4'>
+                <textarea 
+                    onChange={(e) => setTitle(e.target.value)} 
+                    name='title' 
+                    value={title} 
+                    placeholder='Whats on you mind'
+                    className='p-4 text-lg rounded-md my-2 bg-slate-200'    
+                ></textarea>
+            </div>
+            <div className='flex items-center justify-between gap-2'>
+                <p className={`font-bold text-sm ${title.length > 300 ? "text-red-700" : "text-gray-700"}`}>{`${title.length}/300`}</p>
+                <button 
+                disabled={isDisabled} 
+                className='py-2 px-4 m-1 bg-blue-500 rounded-xl text-sm text-white outline outline-blue-400 outline-1 font-light disabled:opacity-30 hover:bg-blue-600'
+                type='submit'
+                >Create a post
+                </button>
+            </div>
+        </form>
+    </div>
   )
 }
 
