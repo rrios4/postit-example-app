@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "prisma/client.ts", "prisma/client.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "prisma/client.tsxx", "prisma/client.tsxsx"],
   "exclude": ["node_modules"]
 }

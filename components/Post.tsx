@@ -13,10 +13,11 @@ type Props = {
   postTitle: string;
   id: string;
   email: string;
+  comments: [];
 }
 
 const Post = (props: Props) => {
-  const { name, avatar, postTitle, id, email } = props
+  const { name, avatar, postTitle, id, email, comments } = props
   const { data: session, status } = useSession();
 
   // Delete post
@@ -51,7 +52,7 @@ const Post = (props: Props) => {
         </div>
         <div className='flex gap-4 cursor-pointer items-center'>
           <Link href={`/post/${id}`}>
-            <p className='text-sm font-bold text-gray-700 dark:text-slate-200'>Comments</p>
+            <p className='text-sm font-bold text-gray-700 dark:text-slate-200'>{comments?.length} Comments</p>
           </Link>
         </div>
     </div>
