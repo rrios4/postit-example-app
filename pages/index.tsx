@@ -18,15 +18,22 @@ export default function Home() {
     queryFn: allPosts, 
     queryKey: ["posts"]
   })
-  if(error) return error
-  if(isLoading) return "Loading..."
+  if(error) return (
+    <main className='flex min-h-screen flex-col my-4 px-8 py-2'>
+        <h1 className='text-2xl mx-auto'>{error}</h1>
+    </main>
+  )
+  if(isLoading) return (
+      <main className='flex min-h-screen flex-col my-4 px-8 py-2'>
+          <h1 className='text-xl font-bold mx-auto'>Loading...</h1>
+      </main>
+    )
   // console.log(data)
   return (
     <main className="flex min-h-screen flex-col my-4 px-8 py-2">
-      {/* <h1>Hello Next! 👋</h1> */}
       <AddPost/>
       {data?.map((post: any) => (
-        <Post key={post.id} name={post.user.name} avatar={post.user.image} postTitle={post.title} id={post.id}/>
+        <Post key={post.id} name={post.user.name} avatar={post.user.image} postTitle={post.title} id={post.id} email={post.user.email}/>
       ) )}
 
     </main>
