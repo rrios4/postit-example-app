@@ -3,9 +3,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
 import toast from 'react-hot-toast'
 
-type Props = {}
+type Props = {
+    props?: React.ReactNode;
+    refreshData: any;
+}
 
 const AddPost = (props: Props) => {
+    const { refreshData } = props
     const [title, setTitle] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
     let toastPostID = "hello"
@@ -23,6 +27,7 @@ const AddPost = (props: Props) => {
                 toast.success("Post has been made! 🚀", { id: toastPostID })
                 setTitle('')
                 setIsDisabled(false)
+                refreshData()
             }
         }
     )

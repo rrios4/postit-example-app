@@ -7,7 +7,7 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
 type Props = {
-  props: React.ReactNode;
+  props?: React.ReactNode;
   name: string;
   avatar: string;
   postTitle: string;

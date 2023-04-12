@@ -14,13 +14,13 @@ const allPosts = async() => {
 }
 
 export default function Home() {
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isLoading, refetch } = useQuery({
     queryFn: allPosts, 
-    queryKey: ["posts"]
+    queryKey: ["posts"],
   })
   if(error) return (
     <main className='flex min-h-screen flex-col my-4 px-8 py-2'>
-        <h1 className='text-2xl mx-auto'>{error}</h1>
+        <h1 className='text-2xl mx-auto'>{error as any}</h1>
     </main>
   )
   if(isLoading) return (
@@ -31,7 +31,7 @@ export default function Home() {
   // console.log(data)
   return (
     <main className="flex min-h-screen flex-col my-4 px-8 py-2">
-      <AddPost/>
+      <AddPost refreshData={refetch}/>
       {data?.map((post: any) => (
         <Post key={post.id} name={post.user.name} avatar={post.user.image} postTitle={post.title} id={post.id} email={post.user.email}/>
       ) )}
