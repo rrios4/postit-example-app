@@ -15,7 +15,7 @@ const allPosts = async() => {
 }
 
 export default function Home() {
-  const { data, error, isLoading, refetch } = useQuery<PostType[]>({
+  const { data, error, isLoading } = useQuery<PostType[]>({
     queryFn: allPosts, 
     queryKey: ["posts"],
   })
@@ -32,7 +32,7 @@ export default function Home() {
   // console.log(data)
   return (
     <main className="flex min-h-screen flex-col my-4 px-8 py-2">
-      <AddPost refreshData={refetch}/>
+      <AddPost/>
       {data?.map((post: any) => (
         <Post key={post.id} comments={post.Comment} name={post.user.name} avatar={post.user.image} postTitle={post.title} id={post.id} email={post.user.email}/>
       ) )}

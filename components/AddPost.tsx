@@ -5,11 +5,11 @@ import toast from 'react-hot-toast'
 
 type Props = {
     props?: React.ReactNode;
-    refreshData: any;
 }
 
 const AddPost = (props: Props) => {
     const { refreshData } = props
+    const queryClient = useQueryClient();
     const [title, setTitle] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
     let toastPostID = "hello"
@@ -25,9 +25,9 @@ const AddPost = (props: Props) => {
             },
             onSuccess: (data) => {
                 toast.success("Post has been made! 🚀", { id: toastPostID })
+                queryClient.invalidateQueries(["posts"])
                 setTitle('')
                 setIsDisabled(false)
-                refreshData()
             }
         }
     )
