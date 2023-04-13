@@ -35,17 +35,6 @@ const Post = (props: Props) => {
                 alt='avatar'
             />
             <h3 className='font-bold text-gray-700 dark:text-gray-200'>{name}</h3>
-            {!session && <>
-
-            </>}
-            {session && <>
-
-            </>}
-            {session?.user?.email === email && <>
-              <button className='ml-auto py-2 px-2 hover:bg-red-500 rounded-lg hover:text-white'>
-                <Trash size={'15px'}/>
-              </button> 
-            </>}
         </div>
         <div className='my-4'>
             <p className='break-all'>{postTitle}</p>

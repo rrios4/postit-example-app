@@ -4,6 +4,7 @@ import Toggle from '@/components/Dashboard/Toggle';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import EditToggle from '@/components/Dashboard/EditToggle';
 
 type Props = {
     props?: React.ReactNode;
@@ -22,6 +23,7 @@ const EditPosts = (props: Props) => {
     const { avatar, name, title, comments, id } = props
     const queryClient = useQueryClient()
     const [toggle, setToggle] = useState(false);
+    const [editToggle, setEditToggle] = useState(false)
     let deleteToastID: string = 'hellow'
     
     // Delete post
@@ -60,10 +62,14 @@ const EditPosts = (props: Props) => {
                     {comments?.length} Comments
                 </p>
                 <button onClick={(e) => {
+                    setEditToggle(true)
+                }} className='ml-auto py-2 px-4 m-1 bg-blue-500 rounded-xl text-sm text-white outline outline-blue-400 outline-1 font-light disabled:opacity-30 hover:bg-blue-600'>Edit</button>
+                <button onClick={(e) => {
                     setToggle(true)
-                }} className='ml-auto py-2 px-4 m-1 bg-red-500 rounded-xl text-sm text-white outline outline-red-400 outline-1 font-light disabled:opacity-30 hover:bg-red-600'>Delete</button>
+                }} className='py-2 px-4 m-1 bg-red-500 rounded-xl text-sm text-white outline outline-red-400 outline-1 font-light disabled:opacity-30 hover:bg-red-600'>Delete</button>
             </div>
         </div>
+        {editToggle && <EditToggle setToggle={setEditToggle} title={title} id={id}/>}
         {toggle && <Toggle deletePost={handleDeletePost} setToggle={setToggle}/>}
     </>
   )
